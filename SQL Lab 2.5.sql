@@ -21,8 +21,11 @@ SELECT COUNT(DISTINCT last_name) FROM sakila.actor;
 SELECT DATEDIFF(MAX(rental_date) , MIN(rental_date)) FROM sakila.rental;   -- Didn´t work so copied the dates
 
 -- 7. Show rental info with additional columns month and weekday. Get 20 results.
-SELECT *, monthname(rental_date) as 'month', weekday(rental_date) as 'weekday' FROM sakila.rental
+SELECT *, monthname(rental_date) as 'month', dayname(rental_date) as 'weekday' FROM sakila.rental
 LIMIT 20;
+
+SELECT GETDATE() rental_date, FORMAT(GETDATE(),'dddd') AS 'Day Name' FROM sakila.rental;
+
 
 -- 8. Add an additional column day_type with values 'weekend' and 'workday' depending on the rental day of the week.
 SELECT *, 
